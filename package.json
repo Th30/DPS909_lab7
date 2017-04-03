@@ -4,7 +4,7 @@
   "description": "Learning Lab",
   "main": "dps909.js",
   "scripts": {
-    "lint": "node_modules/.bin/eslint seneca.js",
+    "lint": "node_modules/.bin/eslint dps909.js",
     "jest": "node_modules/.bin/jest",
     "test": "npm run -s lint && npm run jest"
   },
