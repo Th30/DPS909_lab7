@@ -6,10 +6,31 @@
  * of a valid Seneca College email address, `false` othewise.
  */
 exports.isValidEmail = function (email) {
+  if (!(typeof email === 'string')) {
+    throw new Error('Contains non string');
+  }
+
+  if (!email) { // null
+    throw new Error('Contains null');
+  }
+
+  if (/\s/.test(email)) { // whitespaces
+    return false;
+  }
+
     // TODO: needs to be implemented
-  if (email.includes('@myseneca.ca') || email.includes('@senecacollege.ca')) {
+  if (/@myseneca.ca$/.test(email)) { // @myseneca.ca
     return true;
   }
+
+  if (/@senecacollege.ca$/.test(email)) { // @senecacollege.ca
+    return true;
+  }
+
+  if (/@senecac.on.ca$/.test(email)) { // @someone@senecac.on.ca
+    return true;
+  }
+
   return false;
 };
 
@@ -19,5 +40,8 @@ exports.isValidEmail = function (email) {
  */
 exports.formatSenecaEmail = function (name) {
     // TODO: needs to be implemented
+  if (/\s/.test(name)) { // replace whitespaces
+    return name.replace(/\s/g, '').concat('@myseneca.ca');
+  }
   return name.concat('@myseneca.ca');
 };
